@@ -3,7 +3,7 @@ import Header from "./components/Header.jsx";
 import ShopView from "./components/ShopView.jsx";
 import CartView from "./components/CartView.jsx";
 import Footer from "./components/Footer.jsx";
-import WhatsApp from "./components/whatsApp.jsx"
+import WhatsApp from "./components/whatsapp.jsx"
 
 const TILL = "6880156";
 const PHONE = "0748440035";
