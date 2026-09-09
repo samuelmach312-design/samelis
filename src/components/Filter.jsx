@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-const TILL = "6880156";
 const BRANDS = ["Vitron","Oraimo","DL.Light","Generic","SAMELIS","Denim Co","Solar"];
 const CATEGORIES = [
   { label: "All", value: "ALL", count: 12 },
@@ -50,7 +49,6 @@ export default function Filter({
       border: "1px solid #eaeaea",
       overflow: "hidden"
     }}>
-      {/* HEADER */}
       <div style={{
         display: "flex",
         justifyContent: "space-between",
@@ -59,77 +57,24 @@ export default function Filter({
         borderBottom: "1px solid #f2f2f2"
       }}>
         <span style={{ fontWeight: 800, fontSize: 13, letterSpacing: 0.8 }}>FILTERS</span>
-        <button
-          onClick={clearAll}
-          style={{
-            background: "none",
-            border: 0,
-            color: "#FF6A00",
-            fontSize: 11,
-            fontWeight: 800,
-            cursor: "pointer",
-            letterSpacing: 0.5
-          }}
-        >
-          CLEAR
-        </button>
+        <button onClick={clearAll} style={{ background: "none", border: 0, color: "#FF6A00", fontSize: 11, fontWeight: 800, cursor: "pointer" }}>CLEAR</button>
       </div>
 
       <div style={{ padding: "0 16px 16px" }}>
-
         {/* CATEGORY */}
         <div style={{ marginTop: 16 }}>
-          <button
-            onClick={() => setShowCategory(!showCategory)}
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              background: "none",
-              border: 0,
-              padding: 0,
-              cursor: "pointer"
-            }}
-          >
+          <button onClick={() => setShowCategory(!showCategory)} style={{ width: "100%", display: "flex", justifyContent: "space-between", background: "none", border: 0, padding: 0, cursor: "pointer" }}>
             <span style={{ fontSize: 11, fontWeight: 800, opacity: 0.4, letterSpacing: 1 }}>CATEGORY</span>
             <span style={{ fontSize: 12, opacity: 0.4 }}>{showCategory ? "−" : "+"}</span>
           </button>
-
           {showCategory && (
             <div style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 2 }}>
               {CATEGORIES.map((cat) => {
                 const active = activeCat === cat.value;
                 return (
-                  <div
-                    key={cat.value}
-                    onClick={() => setActiveCat(cat.value)}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "8px 10px",
-                      borderRadius: 8,
-                      background: active ? "#111" : "#fff",
-                      color: active ? "#fff" : "#111",
-                      cursor: "pointer",
-                      fontSize: 13,
-                      fontWeight: active ? 700 : 400,
-                      border: active ? "1px solid #111" : "1px solid transparent",
-                      transition: "all 0.15s"
-                    }}
-                  >
+                  <div key={cat.value} onClick={() => setActiveCat(cat.value)} style={{ display: "flex", justifyContent: "space-between", padding: "8px 10px", borderRadius: 8, background: active ? "#111" : "#fff", color: active ? "#fff" : "#111", cursor: "pointer", fontSize: 13, fontWeight: active ? 700 : 400, border: active ? "1px solid #111" : "1px solid transparent" }}>
                     <span>{cat.label}</span>
-                    <span style={{
-                      background: active ? "#222" : "#f2f2f2",
-                      color: active ? "#fff" : "#111",
-                      padding: "2px 8px",
-                      borderRadius: 10,
-                      fontSize: 11,
-                      fontWeight: 700
-                    }}>
-                      {cat.count}
-                    </span>
+                    <span style={{ background: active ? "#222" : "#f2f2f2", color: active ? "#fff" : "#111", padding: "2px 8px", borderRadius: 10, fontSize: 11, fontWeight: 700 }}>{cat.count}</span>
                   </div>
                 );
               })}
@@ -139,81 +84,20 @@ export default function Filter({
 
         {/* PRICE */}
         <div style={{ marginTop: 20 }}>
-          <button
-            onClick={() => setShowPrice(!showPrice)}
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              background: "none",
-              border: 0,
-              padding: 0,
-              cursor: "pointer"
-            }}
-          >
+          <button onClick={() => setShowPrice(!showPrice)} style={{ width: "100%", display: "flex", justifyContent: "space-between", background: "none", border: 0, padding: 0, cursor: "pointer" }}>
             <span style={{ fontSize: 11, fontWeight: 800, opacity: 0.4, letterSpacing: 1 }}>PRICE (KSh)</span>
             <span style={{ fontSize: 12, opacity: 0.4 }}>{showPrice ? "−" : "+"}</span>
           </button>
-
           {showPrice && (
             <>
               <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-                <div style={{
-                  flex: 1,
-                  background: "#f6f6f6",
-                  border: "1px solid #eee",
-                  borderRadius: 8,
-                  padding: "8px 10px",
-                  fontSize: 12,
-                  textAlign: "center",
-                  fontWeight: 600
-                }}>0</div>
-                <div style={{
-                  flex: 1,
-                  background: "#111",
-                  color: "#fff",
-                  borderRadius: 8,
-                  padding: "8px 10px",
-                  fontSize: 12,
-                  textAlign: "center",
-                  fontWeight: 800
-                }}>{priceMax.toLocaleString()}</div>
+                <div style={{ flex: 1, background: "#f6f6f6", border: "1px solid #eee", borderRadius: 8, padding: "8px 10px", fontSize: 12, textAlign: "center", fontWeight: 600 }}>0</div>
+                <div style={{ flex: 1, background: "#111", color: "#fff", borderRadius: 8, padding: "8px 10px", fontSize: 12, textAlign: "center", fontWeight: 800 }}>{priceMax.toLocaleString()}</div>
               </div>
-
-              <input
-                type="range"
-                min={0}
-                max={30000}
-                step={500}
-                value={priceMax}
-                onChange={(e) => setPriceMax(Number(e.target.value))}
-                style={{
-                  width: "100%",
-                  marginTop: 12,
-                  accentColor: "#111",
-                  cursor: "pointer"
-                }}
-              />
-
+              <input type="range" min={0} max={30000} step={500} value={priceMax} onChange={(e) => setPriceMax(Number(e.target.value))} style={{ width: "100%", marginTop: 12, accentColor: "#111", cursor: "pointer" }} />
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, marginTop: 12 }}>
                 {PRICE_RANGES.map((r) => (
-                  <button
-                    key={r.label}
-                    onClick={() => setPriceMax(r.max)}
-                    style={{
-                      fontSize: 10,
-                      padding: "8px 6px",
-                      borderRadius: 8,
-                      border: isActivePrice(r) ? "1px solid #111" : "1px solid #eee",
-                      background: isActivePrice(r) ? "#111" : "#fff",
-                      color: isActivePrice(r) ? "#fff" : "#111",
-                      fontWeight: 700,
-                      cursor: "pointer"
-                    }}
-                  >
-                    {r.label}
-                  </button>
+                  <button key={r.label} onClick={() => setPriceMax(r.max)} style={{ fontSize: 10, padding: "8px 6px", borderRadius: 8, border: isActivePrice(r) ? "1px solid #111" : "1px solid #eee", background: isActivePrice(r) ? "#111" : "#fff", color: isActivePrice(r) ? "#fff" : "#111", fontWeight: 700, cursor: "pointer" }}>{r.label}</button>
                 ))}
               </div>
             </>
@@ -222,51 +106,17 @@ export default function Filter({
 
         {/* BRAND */}
         <div style={{ marginTop: 20 }}>
-          <button
-            onClick={() => setShowBrands(!showBrands)}
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              background: "none",
-              border: 0,
-              padding: 0,
-              cursor: "pointer"
-            }}
-          >
+          <button onClick={() => setShowBrands(!showBrands)} style={{ width: "100%", display: "flex", justifyContent: "space-between", background: "none", border: 0, padding: 0, cursor: "pointer" }}>
             <span style={{ fontSize: 11, fontWeight: 800, opacity: 0.4, letterSpacing: 1 }}>BRAND</span>
             <span style={{ fontSize: 12, opacity: 0.4 }}>{showBrands ? "−" : "+"}</span>
           </button>
-
           {showBrands && (
             <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 10 }}>
               {BRANDS.map((brand) => {
                 const checked = selectedBrands.includes(brand);
                 return (
-                  <label
-                    key={brand}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 8,
-                      fontSize: 13,
-                      cursor: "pointer",
-                      fontWeight: checked ? 700 : 400,
-                      userSelect: "none"
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => toggleBrand(brand)}
-                      style={{
-                        width: 16,
-                        height: 16,
-                        accentColor: "#111",
-                        cursor: "pointer"
-                      }}
-                    />
+                  <label key={brand} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, cursor: "pointer", fontWeight: checked ? 700 : 400 }}>
+                    <input type="checkbox" checked={checked} onChange={() => toggleBrand(brand)} style={{ width: 16, height: 16, accentColor: "#111" }} />
                     <span style={{ flex: 1 }}>{brand}</span>
                     {checked && <span style={{ color: "#FF6A00", fontSize: 12 }}>●</span>}
                   </label>
@@ -276,23 +126,7 @@ export default function Filter({
           )}
         </div>
 
-        {/* M-PESA BOX */}
-        <div style={{
-          marginTop: 20,
-          background: "#FFF7ED",
-          border: "1px solid #FFEDD5",
-          borderRadius: 10,
-          padding: 12
-        }}>
-          <div style={{ fontSize: 11, fontWeight: 800, color: "#111" }}>💳 Lipa na M-Pesa</div>
-          <div style={{ fontSize: 11, marginTop: 4, lineHeight: 1.5, color: "#444" }}>
-            Till Number<br />
-            <span style={{ fontSize: 16, fontWeight: 900, color: "#FF6A00" }}>{TILL}</span><br />
-            Buy Goods • SAMELIS
-          </div>
-        </div>
-
-        <div style={{ marginTop: 12, fontSize: 11, color: "#999", textAlign: "center" }}>
+        <div style={{ marginTop: 16, fontSize: 11, color: "#999", textAlign: "center" }}>
           {productsCount} products found
         </div>
       </div>
