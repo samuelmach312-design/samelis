@@ -1,4 +1,4 @@
-// src/components/CartView.jsx — LEGIT CHECKOUT
+﻿// src/components/CartView.jsx â€” LEGIT CHECKOUT
 import { useState } from "react";
 import WhatsApp from "./whatsapp.jsx";
 
@@ -9,7 +9,7 @@ export default function CartView({ cart, count, total, onQty, onRemove, onClear,
   if (cart.length === 0) {
     return (
       <div style={{maxWidth:700, margin:"40px auto", background:"#fff", padding:40, borderRadius:16, textAlign:"center"}}>
-        <div style={{fontSize:48}}>🛒</div>
+        <div style={{fontSize:48}}>ðŸ›’</div>
         <h3>Your cart is empty</h3>
         <button onClick={onContinue} style={{marginTop:16, background:"#111", color:"#fff", border:0, padding:"10px 20px", borderRadius:24, cursor:"pointer"}}>Continue Shopping</button>
       </div>
@@ -22,16 +22,16 @@ export default function CartView({ cart, count, total, onQty, onRemove, onClear,
         <div style={{background:"#fff", borderRadius:14, padding:20}}>
           <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:16}}>
             <h3 style={{margin:0}}>Cart ({count})</h3>
-            <button onClick={onContinue} style={{background:"none", border:0, color:"#2563eb", fontWeight:600, cursor:"pointer"}}>← Continue Shopping</button>
+            <button onClick={onContinue} style={{background:"none", border:0, color:"#2563eb", fontWeight:600, cursor:"pointer"}}>â† Continue Shopping</button>
           </div>
           {cart.map(item=>(
             <div key={item.id} style={{display:"flex", gap:16, padding:"16px 0", borderBottom:"1px solid #f0f0f0"}}>
               <img src={item.img} style={{width:80, height:80, borderRadius:10, objectFit:"cover"}} />
               <div style={{flex:1}}>
                 <div style={{fontWeight:700, fontSize:14}}>{item.name}</div>
-                <div style={{fontSize:12, color:"#888", marginTop:2}}>{item.brand} • KSh {item.price.toLocaleString()}</div>
+                <div style={{fontSize:12, color:"#888", marginTop:2}}>{item.brand} â€¢ KSh {item.price.toLocaleString()}</div>
                 <div style={{display:"flex", alignItems:"center", gap:10, marginTop:10}}>
-                  <button onClick={()=>onQty(item.id,-1)} style={{width:28, height:28, borderRadius:14, border:"1px solid #eee", background:"#fff", cursor:"pointer"}}>−</button>
+                  <button onClick={()=>onQty(item.id,-1)} style={{width:28, height:28, borderRadius:14, border:"1px solid #eee", background:"#fff", cursor:"pointer"}}>âˆ’</button>
                   <span style={{fontWeight:700, minWidth:20, textAlign:"center"}}>{item.qty}</span>
                   <button onClick={()=>onQty(item.id,1)} style={{width:28, height:28, borderRadius:14, border:"1px solid #eee", background:"#fff", cursor:"pointer"}}>+</button>
                   <span onClick={()=>onRemove(item.id)} style={{marginLeft:16, color:"#ef4444", fontSize:12, cursor:"pointer", fontWeight:600}}>Remove</span>
@@ -54,10 +54,10 @@ export default function CartView({ cart, count, total, onQty, onRemove, onClear,
     )
   }
 
-  // CHECKOUT STEP — THIS IS WHAT YOU ASKED FOR
+  // CHECKOUT STEP â€” THIS IS WHAT YOU ASKED FOR
   return (
     <div style={{maxWidth:1100, margin:"20px auto", padding:"0 16px"}}>
-      <button onClick={()=>setStep("cart")} style={{background:"none", border:0, fontWeight:600, marginBottom:16, cursor:"pointer"}}>← Back to Cart</button>
+      <button onClick={()=>setStep("cart")} style={{background:"none", border:0, fontWeight:600, marginBottom:16, cursor:"pointer"}}>â† Back to Cart</button>
       <div style={{display:"grid", gridTemplateColumns:"1fr 380px", gap:20}}>
         
         {/* LEFT FORM */}
@@ -90,10 +90,10 @@ export default function CartView({ cart, count, total, onQty, onRemove, onClear,
             </div>
           </div>
           <button onClick={()=>{alert(`Order placed!\n${form.name}\nTotal KSh ${total}\nTill ${TILL}\nWe will call ${form.phone}`); onClear();}} style={{width:"100%", marginTop:20, background:"#111", color:"#fff", border:0, padding:"14px", borderRadius:12, fontWeight:800, fontSize:15, cursor:"pointer"}}>Place Order - KSh {total.toLocaleString()}</button>
-          <div style={{marginTop:12, background:"#FFF7ED", border:"1px solid #FFEDD5", borderRadius:10, padding:12, fontSize:12, textAlign:"center"}}>💳 Lipa na M-Pesa Till <b style={{color:"#FF6A00", fontSize:14}}>{TILL}</b> • Buy Goods SAMELIS • {PHONE}</div>
+          <div style={{marginTop:12, background:"#FFF7ED", border:"1px solid #FFEDD5", borderRadius:10, padding:12, fontSize:12, textAlign:"center"}}>ðŸ’³ Lipa na M-Pesa Till <b style={{color:"#FF6A00", fontSize:14}}>{TILL}</b> â€¢ Buy Goods SAMELIS â€¢ {PHONE}</div>
         </div>
 
-        {/* RIGHT SUMMARY — FIXED */}
+        {/* RIGHT SUMMARY â€” FIXED */}
         <div style={{background:"#fff", borderRadius:14, padding:20, height:"fit-content"}}>
           <h4 style={{margin:"0 0 16px"}}>Order Summary</h4>
           {cart.map(item=>(

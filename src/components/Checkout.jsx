@@ -1,7 +1,7 @@
-// src/components/Checkout.jsx — CLEAN LEGIT CHECKOUT
+﻿// src/components/Checkout.jsx â€” CLEAN LEGIT CHECKOUT
 // Flow: Cart -> Checkout Form -> Order Placed Success (Till 6880156)
 import { useState } from "react";
-import WhatsApp from "./whatsApp.jsx";
+import WhatsApp from "./whatsapp.jsx";
 
 const TILL = "6880156";
 
@@ -35,7 +35,7 @@ export default function Checkout({ cart, total, count, onQty, onRemove, onClear,
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // SUCCESS SCREEN — LIKE YOUR IMAGE BUT WITH TILL 6880156
+  // SUCCESS SCREEN â€” LIKE YOUR IMAGE BUT WITH TILL 6880156
   if (step === "success") {
     return (
       <div style={{ minHeight: "100vh", background: "#121212", display: "flex", alignItems: "center", justifyContent: "center", padding: 16, fontFamily: "Inter, system-ui, sans-serif" }}>
@@ -43,7 +43,7 @@ export default function Checkout({ cart, total, count, onQty, onRemove, onClear,
           <div style={{ background: "#1e1e1e", borderRadius: 20, padding: 24, textAlign: "center", border: "1px solid #2a2a2a", boxShadow: "0 20px 40px rgba(0,0,0,0.5)" }}>
 
             {/* GREEN CHECK */}
-            <div style={{ width: 60, height: 60, background: "#22c55e", borderRadius: 30, display: "flex", alignItems: "center", justifyContent: "center", margin: "-52px auto 16px", border: "4px solid #121212", color: "#fff", fontSize: 28, fontWeight: 900 }}>✓</div>
+            <div style={{ width: 60, height: 60, background: "#22c55e", borderRadius: 30, display: "flex", alignItems: "center", justifyContent: "center", margin: "-52px auto 16px", border: "4px solid #121212", color: "#fff", fontSize: 28, fontWeight: 900 }}>âœ“</div>
 
             <h2 style={{ color: "#fff", margin: "0 0 6px", fontSize: 22, fontWeight: 900, letterSpacing: -0.5 }}>Order Placed!</h2>
             <div style={{ color: "#9ca3af", fontSize: 13, marginBottom: 20 }}>Order #{orderId} confirmed</div>
@@ -55,7 +55,7 @@ export default function Checkout({ cart, total, count, onQty, onRemove, onClear,
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 14 }}>
                 <span style={{ color: "#fff", fontSize: 32, fontWeight: 900, letterSpacing: 1 }}>{TILL}</span>
                 <button onClick={copyTill} style={{ background: "#333", border: "1px solid #444", width: 38, height: 38, borderRadius: 10, cursor: "pointer", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  {copied ? "✓" : "⎙"}
+                  {copied ? "âœ“" : "âŽ™"}
                 </button>
               </div>
 
@@ -89,7 +89,7 @@ export default function Checkout({ cart, total, count, onQty, onRemove, onClear,
 
           {/* ORDER DETAILS BELOW CARD */}
           <div style={{ color: "#6b7280", fontSize: 11, textAlign: "center", marginTop: 12 }}>
-            Order for {form.name} • {form.phone} • {form.city}
+            Order for {form.name} â€¢ {form.phone} â€¢ {form.city}
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@ export default function Checkout({ cart, total, count, onQty, onRemove, onClear,
       <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 20 }}>
         <div style={{ background: "#fff", borderRadius: 14, padding: 24, border: "1px solid #f0f0f0" }}>
           <h3 style={{ margin: "0 0 4px", fontSize: 18, fontWeight: 800 }}>Checkout</h3>
-          <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 20 }}>{count} items • KSh {total.toLocaleString()}</div>
+          <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 20 }}>{count} items â€¢ KSh {total.toLocaleString()}</div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             <div style={{ gridColumn: "1 / -1" }}>
@@ -136,7 +136,7 @@ export default function Checkout({ cart, total, count, onQty, onRemove, onClear,
           </button>
 
           <div style={{ marginTop: 12, background: "#FFF7ED", border: "1px solid #FFEDD5", borderRadius: 10, padding: 12, fontSize: 12, textAlign: "center" }}>
-            💳 Lipa na M-Pesa Till <b style={{ color: "#FF6A00", fontSize: 14 }}>{TILL}</b> • Buy Goods SAMELIS
+            ðŸ’³ Lipa na M-Pesa Till <b style={{ color: "#FF6A00", fontSize: 14 }}>{TILL}</b> â€¢ Buy Goods SAMELIS
           </div>
         </div>
 

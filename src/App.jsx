@@ -2,9 +2,9 @@
 import Header from "./components/Header.jsx";
 import ShopView from "./components/ShopView.jsx";
 import CartView from "./components/CartView.jsx";
+import Checkout from "./components/Checkout.jsx";
 import Footer from "./components/Footer.jsx";
-import WhatsApp from "./components/whatsApp.jsx"
-import Checkout from "./components/Checkout.jsx"
+import WhatsApp from "./components/whatsapp.jsx"; // LOWERCASE ONLY
 
 const TILL = "6880156";
 const PHONE = "0748440035";
@@ -42,12 +42,11 @@ export default function App(){
     <div style={{fontFamily:"Inter, system-ui, sans-serif", background: view==="cart"? "#f6f6f7" : "#f5f5f5", minHeight:"100vh", color:"#111"}}>
       <Header search={search} setSearch={setSearch} count={count} setView={setView} view={view} />
       {view==="cart"? (
-        <CartView cart={cart} count={count} total={total} onQty={updateQty} onRemove={removeItem} onClear={clearCart} onContinue={()=>setView("shop")} TILL={TILL} PHONE={PHONE} WHATSAPP={`https://wa.me/254748440035`} />
+        <Checkout cart={cart} total={total} count={count} onQty={updateQty} onRemove={removeItem} onClear={clearCart} onContinue={()=>setView("shop")} />
       ) : (
         <ShopView filtered={filtered} activeCat={activeCat} setActiveCat={setActiveCat} priceMax={priceMax} setPriceMax={setPriceMax} selectedBrands={selectedBrands} setSelectedBrands={setSelectedBrands} onAdd={addCart} count={count} setView={setView} TILL={TILL} />
       )}
       <Footer TILL={TILL} PHONE={PHONE} />
-      {/* REAL WHATSAPP ICON - LEGIT */}
       <WhatsApp variant="float" cart={cart} total={total} />
     </div>
   )
