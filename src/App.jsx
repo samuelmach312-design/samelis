@@ -3,10 +3,10 @@ import Header from "./components/Header.jsx";
 import ShopView from "./components/ShopView.jsx";
 import CartView from "./components/CartView.jsx";
 import Footer from "./components/Footer.jsx";
+import WhatsApp from "./components/whatsApp.jsx"
 
 const TILL = "6880156";
 const PHONE = "0748440035";
-const WHATSAPP = "https://wa.me/254748440035";
 
 const initialProducts = [
   {id:1, cat:"Electronics", brand:"Vitron", name:"Vitron 32 Smart Android TV", price:16500, old:19900, disc:17, img:"https://images.unsplash.com/photo-1593359677879-a4bb92f367d8?w=500"},
@@ -41,12 +41,13 @@ export default function App(){
     <div style={{fontFamily:"Inter, system-ui, sans-serif", background: view==="cart"? "#f6f6f7" : "#f5f5f5", minHeight:"100vh", color:"#111"}}>
       <Header search={search} setSearch={setSearch} count={count} setView={setView} view={view} />
       {view==="cart"? (
-        <CartView cart={cart} count={count} total={total} onQty={updateQty} onRemove={removeItem} onClear={clearCart} onContinue={()=>setView("shop")} TILL={TILL} PHONE={PHONE} WHATSAPP={WHATSAPP} />
+        <CartView cart={cart} count={count} total={total} onQty={updateQty} onRemove={removeItem} onClear={clearCart} onContinue={()=>setView("shop")} TILL={TILL} PHONE={PHONE} WHATSAPP={`https://wa.me/254748440035`} />
       ) : (
         <ShopView filtered={filtered} activeCat={activeCat} setActiveCat={setActiveCat} priceMax={priceMax} setPriceMax={setPriceMax} selectedBrands={selectedBrands} setSelectedBrands={setSelectedBrands} onAdd={addCart} count={count} setView={setView} TILL={TILL} />
       )}
       <Footer TILL={TILL} PHONE={PHONE} />
-      <a href={WHATSAPP} target="_blank" style={{position:"fixed", bottom:20, right:20, background:"#25D366", width:56, height:56, borderRadius:28, display:"flex", alignItems:"center", justifyContent:"center", fontSize:26, color:"#fff", textDecoration:"none"}}>💬</a>
+      {/* REAL WHATSAPP ICON - LEGIT */}
+      <WhatsApp variant="float" cart={cart} total={total} />
     </div>
   )
 }

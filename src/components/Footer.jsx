@@ -1,5 +1,5 @@
 // src/components/Footer.jsx
-export default function Footer({ TILL, PHONE }) {
+export default function Footer({ TILL, PHONE, WHATSAPP }) {
   return (
     <footer style={{background:"#0f0f0f", color:"#bbb", marginTop:30, padding:"24px", textAlign:"center"}}>
       <div style={{fontSize:13, fontWeight:700, color:"#fff"}}>SAMELIS • TRUSTED LIKE FAMILY</div>
