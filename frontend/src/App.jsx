@@ -1,63 +1,37 @@
-﻿import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+﻿import { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Preloader from './components/Preloader'
 import InstallPrompt from './components/InstallPrompt'
-import WhatsAppButton from './components/WhatsAppButton'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
-import Privacy from './pages/Privacy'
-import Terms from './pages/Terms'
-import Contact from './pages/Contact'
-import Login from './pages/Login'
-import ForgotPassword from './pages/ForgotPassword'
-import ResetPassword from './pages/ResetPassword'
-import Signup from './pages/Signup'
-import OrderSuccess from './pages/OrderSuccess'
-import AdminLayout from './components/AdminLayout'
-import { AuthProvider } from './context/AuthContext'
-import { CartProvider } from './context/CartContext'
 
-function LayoutWrapper() {
-  const location = useLocation()
-  const isAdmin = location.pathname.startsWith('/admin')
-  
-  return (
-    <>
-      {!isAdmin && <Header />}
-      <main className={isAdmin ? "min-h-screen" : "main-content"}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/order-success" element={<OrderSuccess />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/admin" element={<AdminLayout />} />
-        </Routes>
-      </main>
-      {!isAdmin && <Footer />}
-      {!isAdmin && <InstallPrompt />}
-      {!isAdmin && <WhatsAppButton />}
-    </>
-  )
-}
+export default function App(){
+  const [loading,setLoading]=useState(true)
+  useEffect(()=>{
+    // Kill old Monique service workers that inject i9b5n5sl.js
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.getRegistrations().then(regs=>{
+        regs.forEach(r=>r.unregister())
+      })
+    }
+    const t=setTimeout(()=>setLoading(false),1000)
+    return ()=>clearTimeout(t)
+  },[])
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <AuthProvider>
-        <CartProvider>
-          <div className="app">
-            <LayoutWrapper />
-          </div>
-        </CartProvider>
-      </AuthProvider>
-    </BrowserRouter>
-  )
+  return (<BrowserRouter>
+    {loading && <Preloader/>}
+    <Header/>
+    <main className="min-h-screen bg-gray-50">
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/checkout" element={<Checkout/>}/>
+      </Routes>
+    </main>
+    <Footer/>
+    <InstallPrompt/>
+  </BrowserRouter>)
 }
