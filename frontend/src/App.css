@@ -1,0 +1,124 @@
+.app {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+.header, .footer {
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+}
+
+/* BLUE PRO HEADER - YOUR NEW THEME */
+.page-header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: white;
+  padding: 3rem 1.5rem 2rem;
+  border-bottom: 3px solid #3b82f6;
+  margin: 0;
+  position: relative;
+}
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+.page-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-header-row h2 {
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 1rem;
+  margin: 0;
+}
+.product-count {
+  background: #3b82f6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* FIX ENLARGED IMAGES - 2 cols mobile, 4 desktop */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 12px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    padding: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    padding: 20px 24px 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}
+
+/* PRODUCT CARD FIX - NO MORE ZOOM */
+.products-grid > div {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.products-grid > div:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+/* IMAGE FIX - THIS FIXES ENLARGED */
+.products-grid img {
+  width: 100% !important;
+  height: 180px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  background: #f8fafc;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .products-grid img {
+    height: 220px !important;
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
