@@ -1,0 +1,13 @@
+{
+  "name": "SAMELIS - Trusted Family Shop",
+  "short_name": "SAMELIS",
+  "description": "Premium footwear Nairobi - Till 6880156",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    { "src": "/logo.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
