@@ -67,9 +67,7 @@ export default function App() {
     <div className="app">
       <header className="header">
         <div className="header-inner">
-          <div className="logo" style={{display:'flex', alignItems:'center', gap:'10px'}}>
-            <img src="/logo.png" alt="SAMELIS - Trusted Family Shop" style={{height:'44px', width:'auto', objectFit:'contain'}} />
-          </div>
+          <div className="logo"><div className="logo-s">S</div><span>SAMELIS</span></div>
           <div className="search-wrap">
             <span className="search-icon">⌕</span>
             <input className="search-input" placeholder="Search shoes, boots, slides, belts..." value={search} onChange={e => setSearch(e.target.value)} />
@@ -83,7 +81,7 @@ export default function App() {
 
       <div className="trust-bar">
         <div className="trust-item">🚚 Free Delivery Nairobi • Same-day</div>
-        <div className="trust-item">🛡 100% Genuine • SAMELIS Verified</div>
+        <div className="trust-item">🛡️ 100% Genuine • SAMELIS Verified</div>
         <div className="trust-item">🔒 Secure M-Pesa • Till {TILL}</div>
       </div>
 
@@ -194,13 +192,7 @@ export default function App() {
 
       <footer className="footer">
         <div className="footer-inner">
-          <div>
-            <div className="logo" style={{ color: 'white', marginBottom: 10, display:'flex', alignItems:'center', gap:'10px' }}>
-              <img src="/logo.png" alt="SAMELIS" style={{height:'38px', filter:'brightness(0) invert(1)'}} />
-              <span>SAMELIS</span>
-            </div>
-            <div style={{ fontSize: 13, lineHeight: 1.6 }}>Premium footwear Nairobi. Genuine leather. Till {TILL} • Lipa na M-Pesa<br/>Trusted Family Shop</div>
-          </div>
+          <div><div className="logo" style={{ color: 'white', marginBottom: 10 }}><div className="logo-s">S</div><span>SAMELIS</span></div><div style={{ fontSize: 13, lineHeight: 1.6 }}>Premium footwear Nairobi. Genuine leather. Till {TILL} • Lipa na M-Pesa</div></div>
           <div><h4>Pay With</h4><div style={{ fontSize: 13 }}>M-Pesa Till: <b style={{ color: 'white' }}>{TILL}</b><br />Buy Goods • No extra charge</div><h4 style={{ marginTop: 18 }}>Contact</h4><div>📞 0748440035<br /><a href={`https://wa.me/${WHATSAPP}`} target="_blank" style={{ color: '#94a3b8' }}>💬 WhatsApp</a></div></div>
           <div><h4>Store</h4><div style={{ fontSize: 13 }}>Nairobi, Kenya • Free CBD Delivery<br />Mon-Sat 8am-8pm • Sun 10am-6pm<br /><span style={{ fontSize: 11, color: '#64748b' }}>© 2026 SAMELIS Till {TILL}</span></div></div>
         </div>
