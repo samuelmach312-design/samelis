@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import InstallPrompt from "./InstallPrompt";
 
 const PRODUCTS = [
   { id: 1, name: "Air Runner Sneaker X", category: "Shoes", price: 2999, oldPrice: 3999, discount: 25, rating: 4.8, reviews: 124, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop" },
@@ -191,9 +192,6 @@ export default function App() {
           </div>
         </div>
       )}
-      <InstallPrompt />
-
-      
 
       <footer className="footer">
         <div className="footer-inner">
@@ -208,6 +206,8 @@ export default function App() {
           <div><h4>Store</h4><div style={{ fontSize: 13 }}>Nairobi, Kenya • Free CBD Delivery<br />Mon-Sat 8am-8pm • Sun 10am-6pm<br /><span style={{ fontSize: 11, color: '#64748b' }}>© 2026 SAMELIS Till {TILL}</span></div></div>
         </div>
       </footer>
+
+      <InstallPrompt />
     </div>
   );
 }
