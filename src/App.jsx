@@ -191,6 +191,9 @@ export default function App() {
           </div>
         </div>
       )}
+      <InstallPrompt />
+
+      
 
       <footer className="footer">
         <div className="footer-inner">
