@@ -5,8 +5,6 @@ export default function Header() {
   const [showUserMenu, setShowUserMenu] = useState(false)
   const [showMobile, setShowMobile] = useState(false)
   const navigate = useNavigate()
-
-  // Mock user - replace with your useAuth() later
   const user = JSON.parse(localStorage.getItem('samelis_user') || 'null')
   const cartCount = JSON.parse(localStorage.getItem('samelis_cart') || '[]').length
 
@@ -18,100 +16,80 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-slate-200">
-      {/* Trust bar - from your screenshot */}
-      <div className="bg-slate-900 text-white text-xs py-1.5">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <div className="flex gap-3 font-semibold">
-            <span>📦 Free Delivery Nairobi • Same-day</span>
-            <span className="hidden md:inline opacity-50">•</span>
-            <span className="hidden md:inline">100% Genuine • SAMELIS Verified</span>
-          </div>
-          <div className="hidden md:flex gap-4 opacity-70">
-            <Link to="/contact">Help</Link>
-          </div>
+    <header style={{position:'sticky', top:0, zIndex:50, background:'white', borderBottom:'1px solid #e2e8f0'}}>
+      <div style={{background:'#0f172a', color:'white', fontSize:'11px', padding:'6px 0'}}>
+        <div style={{maxWidth:'1280px', margin:'0 auto', padding:'0 16px', display:'flex', justifyContent:'space-between'}}>
+          <span style={{fontWeight:600}}>📦 Free Delivery Nairobi • Same-day • 100% Genuine • SAMELIS Verified</span>
+          <span style={{display:'none'}}>Help</span>
         </div>
       </div>
 
-      {/* Main bar - exactly like your screenshot but legit */}
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src="/logo.png" alt="SAMELIS" className="h-8 w-auto" onError={(e)=>e.target.style.display='none'} />
-          <span className="font-black text-sm tracking-tight">SAMELIS</span>
-        </Link>
+      <div style={{maxWidth:'1280px', margin:'0 auto', padding:'12px 16px', display:'flex', alignItems:'center', gap:'16px'}}>
+        <Link to="/" style={{display:'flex', alignItems:'center', gap:'8px', textDecoration:'none', color:'black', fontWeight:900, fontSize:'16px'}}>SAMELIS</Link>
 
-        <nav className="hidden lg:flex items-center gap-1 text-sm font-bold text-slate-700">
-          <Link to="/" className="px-3 py-2 rounded-full hover:bg-slate-100">Home</Link>
-          <Link to="/products" className="px-3 py-2 rounded-full hover:bg-slate-100">Shop</Link>
-          <Link to="/contact" className="px-3 py-2 rounded-full hover:bg-slate-100">Contact</Link>
+        <nav style={{display:'flex', gap:'4px'}} className="hide-mobile">
+          <Link to="/" style={{padding:'8px 12px', borderRadius:'20px', background:'#f1f5f9', textDecoration:'none', color:'black', fontSize:'13px', fontWeight:700}}>Home</Link>
+          <Link to="/products" style={{padding:'8px 12px', borderRadius:'20px', textDecoration:'none', color:'#334155', fontSize:'13px', fontWeight:700}}>Shop</Link>
+          <Link to="/contact" style={{padding:'8px 12px', borderRadius:'20px', textDecoration:'none', color:'#334155', fontSize:'13px', fontWeight:700}}>Contact</Link>
         </nav>
 
-        <div className="flex-1 relative max-w-2xl">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">⌕</span>
-          <input
-            placeholder="Search shoes, boots, slides, belts..."
-            className="w-full h-11 pl-11 pr-4 bg-slate-100 rounded-full text-sm outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 border border-transparent"
-          />
+        <div style={{flex:1, position:'relative', maxWidth:'600px'}}>
+          <input placeholder="Search shoes, boots, slides, belts..." style={{width:'100%', height:'44px', paddingLeft:'40px', paddingRight:'16px', background:'#f1f5f9', border:'1px solid transparent', borderRadius:'999px', fontSize:'13px', outline:'none'}} />
+          <span style={{position:'absolute', left:'14px', top:'50%', transform:'translateY(-50%)', color:'#94a3b8'}}>⌕</span>
         </div>
 
-        <div className="flex items-center gap-2">
-          <div className="hidden md:flex items-center gap-2 bg-slate-900 text-white px-4 h-10 rounded-full text-xs font-bold">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-            TILL 6880156
+        <div style={{display:'flex', alignItems:'center', gap:'8px'}}>
+          <div style={{display:'flex', alignItems:'center', gap:'8px', background:'#0f172a', color:'white', padding:'0 16px', height:'40px', borderRadius:'999px', fontSize:'12px', fontWeight:800}}>
+            <span style={{width:'8px', height:'8px', background:'#4ade80', borderRadius:'50%', display:'inline-block'}}></span> TILL 6880156
           </div>
 
-          <Link to="/cart" className="relative w-10 h-10 bg-white border rounded-full flex items-center justify-center hover:bg-slate-50">
+          <Link to="/cart" style={{position:'relative', width:'40px', height:'40px', border:'1px solid #e2e8f0', borderRadius:'50%', display:'grid', placeItems:'center', textDecoration:'none'}}>
             🛒
-            {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">{cartCount}</span>}
+            {cartCount > 0 && <span style={{position:'absolute', top:'-4px', right:'-4px', background:'#2563eb', color:'white', fontSize:'10px', width:'20px', height:'20px', borderRadius:'50%', display:'grid', placeItems:'center', fontWeight:800}}>{cartCount}</span>}
           </Link>
 
-          <div className="relative">
-            <button onClick={()=>setShowUserMenu(!showUserMenu)} className="w-10 h-10 rounded-full bg-slate-100 border font-bold flex items-center justify-center">
+          <div style={{position:'relative'}}>
+            <button onClick={()=>setShowUserMenu(!showUserMenu)} style={{width:'40px', height:'40px', borderRadius:'50%', background:'#f1f5f9', border:'1px solid #e2e8f0', fontWeight:800, cursor:'pointer'}}>
               {user? user.email[0].toUpperCase() : '👤'}
             </button>
-
             {showUserMenu && (
-              <div className="absolute right-0 mt-2 w-60 bg-white rounded-2xl shadow-2xl border border-slate-100 p-2 z-50">
+              <div style={{position:'absolute', right:0, marginTop:'8px', width:'240px', background:'white', borderRadius:'16px', boxShadow:'0 20px 60px rgba(0,0,0,0.2)', border:'1px solid #f1f5f9', padding:'8px', zIndex:50}}>
                 {user? (
                   <>
-                    <div className="px-3 py-3 border-b mb-1">
-                      <div className="text-sm font-bold truncate">{user.email}</div>
-                      <div className="text-xs text-slate-500">SAMELIS Customer</div>
+                    <div style={{padding:'10px 12px', borderBottom:'1px solid #f1f5f9', marginBottom:'4px'}}>
+                      <div style={{fontSize:'13px', fontWeight:700, overflow:'hidden', textOverflow:'ellipsis'}}>{user.email}</div>
+                      <div style={{fontSize:'11px', color:'#64748b'}}>SAMELIS Customer</div>
                     </div>
-                    <Link to="/" onClick={()=>setShowUserMenu(false)} className="flex items-center gap-3 px-3 py-2.5 text-sm font-semibold hover:bg-slate-50 rounded-xl">🏠 Home</Link>
-                    <Link to="/orders" onClick={()=>setShowUserMenu(false)} className="flex items-center gap-3 px-3 py-2.5 text-sm font-semibold hover:bg-slate-50 rounded-xl">📦 My Orders</Link>
-                    <Link to="/profile" onClick={()=>setShowUserMenu(false)} className="flex items-center gap-3 px-3 py-2.5 text-sm font-semibold hover:bg-slate-50 rounded-xl">👤 Profile</Link>
-                    <button onClick={logout} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50 rounded-xl">🚪 Logout</button>
+                    <Link to="/" onClick={()=>setShowUserMenu(false)} style={{display:'flex', gap:'8px', padding:'10px 12px', fontSize:'13px', fontWeight:600, textDecoration:'none', color:'black', borderRadius:'10px'}}>🏠 Home</Link>
+                    <Link to="/profile" onClick={()=>setShowUserMenu(false)} style={{display:'flex', gap:'8px', padding:'10px 12px', fontSize:'13px', fontWeight:600, textDecoration:'none', color:'black', borderRadius:'10px'}}>👤 Profile</Link>
+                    <button onClick={logout} style={{width:'100%', textAlign:'left', display:'flex', gap:'8px', padding:'10px 12px', fontSize:'13px', fontWeight:600, color:'#dc2626', background:'none', border:'none', cursor:'pointer'}}>🚪 Logout</button>
                   </>
                 ) : (
                   <>
-                    <div className="px-3 py-3 border-b mb-2">
-                      <div className="text-sm font-bold">Welcome to SAMELIS</div>
-                      <div className="text-xs text-slate-500">Login for faster checkout</div>
+                    <div style={{padding:'10px 12px', borderBottom:'1px solid #f1f5f9', marginBottom:'8px'}}>
+                      <div style={{fontSize:'13px', fontWeight:700}}>Welcome to SAMELIS</div>
+                      <div style={{fontSize:'11px', color:'#64748b'}}>Login for faster checkout</div>
                     </div>
-                    <Link to="/" onClick={()=>setShowUserMenu(false)} className="flex items-center gap-3 px-3 py-2.5 text-sm font-semibold hover:bg-slate-50 rounded-xl">🏠 Home</Link>
-                    <Link to="/login" onClick={()=>setShowUserMenu(false)} className="flex items-center gap-3 px-3 py-2.5 text-sm font-semibold hover:bg-slate-50 rounded-xl">🔑 Login</Link>
-                    <Link to="/signup" onClick={()=>setShowUserMenu(false)} className="flex items-center gap-3 px-3 py-2.5 text-sm font-bold bg-slate-900 text-white rounded-xl justify-center">✨ Sign Up</Link>
-                    <div className="mt-2 p-3 bg-blue-50 rounded-xl text-xs text-slate-600">
-                      <b>Till 6880156</b> • M-Pesa Buy Goods
-                    </div>
+                    <Link to="/" onClick={()=>setShowUserMenu(false)} style={{display:'flex', gap:'8px', padding:'10px 12px', fontSize:'13px', fontWeight:600, textDecoration:'none', color:'black', background:'#f8fafc', borderRadius:'10px', marginBottom:'4px'}}>🏠 Home</Link>
+                    <Link to="/login" onClick={()=>setShowUserMenu(false)} style={{display:'flex', gap:'8px', padding:'10px 12px', fontSize:'13px', fontWeight:600, textDecoration:'none', color:'black', background:'#f8fafc', borderRadius:'10px', marginBottom:'4px'}}>🔑 Login</Link>
+                    <Link to="/signup" onClick={()=>setShowUserMenu(false)} style={{display:'flex', gap:'8px', padding:'10px 12px', fontSize:'13px', fontWeight:700, textDecoration:'none', color:'white', background:'#0f172a', borderRadius:'10px', justifyContent:'center'}}>✨ Sign Up</Link>
+                    <div style={{marginTop:'8px', padding:'10px', background:'#eff6ff', borderRadius:'10px', fontSize:'11px', color:'#475569'}}><b>Till 6880156</b> • M-Pesa Buy Goods</div>
                   </>
                 )}
               </div>
             )}
           </div>
-
-          <button className="lg:hidden w-10 h-10 border rounded-full" onClick={()=>setShowMobile(!showMobile)}>☰</button>
+          <button onClick={()=>setShowMobile(!showMobile)} style={{width:'40px', height:'40px', border:'1px solid #e2e8f0', borderRadius:'50%', background:'white', cursor:'pointer'}}>☰</button>
         </div>
       </div>
 
       {showMobile && (
-        <div className="lg:hidden border-t px-4 py-3 flex flex-col gap-1 text-sm font-bold">
-          <Link to="/" onClick={()=>setShowMobile(false)} className="py-2">🏠 Home</Link>
-          <Link to="/login" onClick={()=>setShowMobile(false)} className="py-2">🔑 Login</Link>
-          <Link to="/signup" onClick={()=>setShowMobile(false)} className="py-2">✨ Sign Up</Link>
-          <Link to="/profile" onClick={()=>setShowMobile(false)} className="py-2">👤 Profile</Link>
-          <div className="mt-2 bg-slate-900 text-white rounded-full py-2.5 text-center text-xs">TILL 6880156 • Lipa na M-Pesa</div>
+        <div style={{borderTop:'1px solid #e2e8f0', padding:'12px 16px', display:'flex', flexDirection:'column', gap:'8px', fontSize:'14px', fontWeight:700}}>
+          <Link to="/" onClick={()=>setShowMobile(false)} style={{textDecoration:'none', color:'black', padding:'6px 0'}}>🏠 Home</Link>
+          <Link to="/login" onClick={()=>setShowMobile(false)} style={{textDecoration:'none', color:'black', padding:'6px 0'}}>🔑 Login</Link>
+          <Link to="/signup" onClick={()=>setShowMobile(false)} style={{textDecoration:'none', color:'black', padding:'6px 0'}}>✨ Sign Up</Link>
+          <Link to="/profile" onClick={()=>setShowMobile(false)} style={{textDecoration:'none', color:'black', padding:'6px 0'}}>👤 Profile</Link>
+          <div style={{background:'#0f172a', color:'white', borderRadius:'20px', padding:'10px', textAlign:'center', fontSize:'12px', marginTop:'8px'}}>TILL 6880156 • Lipa na M-Pesa</div>
         </div>
       )}
     </header>
