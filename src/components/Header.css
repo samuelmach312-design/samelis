@@ -1,194 +1,298 @@
+/* ===== SAMELIS LEGIT HEADER ===== */
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #f1f5f9;
   width: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+/* Top trust strip - makes it look legit instantly */
+.header::before{
+  content: "📦 Free Delivery Nairobi • Same-day • 🛡️ 100% Genuine • SAMELIS Verified • 🔒 Till 6880156";
+  display: block;
+  background: #0f172a;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 6px 16px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 12px 16px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
 }
 
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   text-decoration: none;
   flex-shrink: 0;
 }
 
 .header-logo img {
-  height: 32px;
-  width: auto;
+  height: 36px;
+  width: 36px;
+  object-fit: contain;
+  background: #0f172a;
+  border-radius: 10px;
+  padding: 6px;
 }
 
 .header-logo-text {
-  font-size: 18px;
-  font-weight: 700;
-  color: #111827;
-  letter-spacing: 0.5px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+  line-height: 1;
   display: none;
+}
+
+.header-logo-text span{
+  display: block;
+  font-size: 8.5px;
+  color: #2563eb;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  margin-top: 2px;
 }
 
 @media (min-width: 640px) {
- .header-logo-text {
-    display: block;
-  }
+.header-logo-text { display: block; }
 }
 
+/* Search - rounded like your screenshot but better */
 .header-search {
   flex: 1;
-  max-width: 500px;
+  max-width: 620px;
   display: none;
+  position: relative;
+}
+
+.header-search::before{
+  content: "⌕";
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 14px;
+  pointer-events: none;
 }
 
 @media (min-width: 768px) {
- .header-search {
-    display: block;
-  }
+.header-search { display: block; }
 }
 
 .header-search input {
   width: 100%;
-  padding: 8px 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 14px;
-  background: #f9fafb;
+  padding: 11px 16px 11px 38px;
+  border: 1px solid #f1f5f9;
+  border-radius: 999px;
+  font-size: 13px;
+  background: #f1f5f9;
+  outline: none;
+  transition: all 0.2s;
+  font-weight: 500;
 }
 
 .header-search input:focus {
-  outline: none;
-  border-color: #111827;
+  border-color: #2563eb;
   background: #fff;
+  box-shadow: 0 0 0 4px #eff6ff;
+}
+
+.header-search input::placeholder{
+  color: #94a3b8;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+/* Till badge - makes it legit Kenyan store */
+.header-actions::before{
+  content: "● TILL 6880156";
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: #0f172a;
+  color: white;
+  padding: 0 14px;
+  height: 38px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+@media (min-width: 1024px){
+ .header-actions::before{ display: flex; }
+}
+.header-actions::before::first-letter{
+  color: #4ade80;
 }
 
 .header-user {
   display: none;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 @media (min-width: 640px) {
- .header-user {
-    display: flex;
-  }
+.header-user { display: flex; }
 }
 
 .header-greeting {
-  font-size: 13px;
-  color: #374151;
+  font-size: 12px;
+  color: #475569;
   white-space: nowrap;
+  font-weight: 500;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header-logout,.header-login {
   font-size: 13px;
-  font-weight: 600;
-  color: #111827;
-  background: none;
-  border: none;
+  font-weight: 700;
+  color: #0f172a;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: all 0.2s;
+}
+
+.header-login{
+  background: #0f172a;
+  color: white;
+  border-color: #0f172a;
 }
 
 .header-logout:hover,.header-login:hover {
-  text-decoration: underline;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-decoration: none;
 }
 
 .header-cart {
   position: relative;
-  color: #111827;
-  padding: 4px;
+  color: #0f172a;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: white;
+  transition: all 0.2s;
+}
+
+.header-cart:hover{
+  border-color: #0f172a;
+  background: #f8fafc;
 }
 
 .header-cart-badge {
   position: absolute;
   top: -4px;
   right: -4px;
-  background: #ef4444;
+  background: #2563eb;
   color: #fff;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
   border-radius: 9999px;
   min-width: 18px;
   height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 4px;
+  padding: 0 5px;
+  border: 2px solid white;
 }
 
 .header-menu-btn {
-  background: none;
-  border: none;
-  padding: 4px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
   cursor: pointer;
-  color: #111827;
+  color: #0f172a;
 }
+
 .install-menu-btn {
-  background: #000;
+  background: #0f172a;
   color: white;
   border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
   cursor: pointer;
   width: 100%;
   text-align: left;
+  font-weight: 700;
+  font-size: 13px;
+  transition: all 0.2s;
 }
+
 .install-menu-btn:hover {
-  background: #222;
+  background: #1e293b;
+  transform: translateY(-1px);
 }
 
 @media (min-width: 768px) {
- .header-menu-btn {
-    display: none;
-  }
+.header-menu-btn { display: none; }
 }
 
 .header-mobile-menu {
-  border-top: 1px solid #e5e7eb;
-  background: #fff;
-  padding: 8px 16px;
+  border-top: 1px solid #f1f5f9;
+  background: white;
+  padding: 8px 16px 16px;
   display: flex;
   flex-direction: column;
 }
 
 .header-mobile-menu a,
 .header-mobile-menu button {
-  padding: 12px 0;
+  padding: 14px 12px;
   text-align: left;
-  font-size: 15px;
-  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
   text-decoration: none;
   background: none;
   border: none;
-  border-bottom: 1px solid #f3f4f6;
+  border-radius: 12px;
   cursor: pointer;
 }
 
-.header-mobile-menu a:last-child,
-.header-mobile-menu button:last-child {
-  border-bottom: none;
+.header-mobile-menu a:hover,
+.header-mobile-menu button:hover{
+  background: #f8fafc;
 }
 
 @media (min-width: 768px) {
- .header-mobile-menu {
-    display: none;
-  }
+.header-mobile-menu { display: none; }
 }
-
