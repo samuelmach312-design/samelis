@@ -1,28 +1,16 @@
 import { Link } from 'react-router-dom'
-
 export default function Footer(){
-  return (
-    <footer className="bg-[#0f0f0f] text-white border-t border-white/10 mt-10">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
-        <div className="flex flex-col md:flex-row justify-between gap-6">
-          <div>
-            <div className="flex items-center gap-2.5 mb-2">
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center font-black text-black">S</div>
-              <span className="font-black text-sm">SAMELIS</span>
-            </div>
-            <p className="text-xs opacity-60 max-w-xs">Trusted Like Family - Quality products at Chuka, Behind Coop Bank</p>
-          </div>
-          <div className="text-xs">
-            <div className="font-bold mb-2">Pay Via Mpesa</div>
-            <div className="bg-[#ffcc00] text-black px-4 py-2 rounded-md font-black inline-block">
-              Till Number: 6880156
-            </div>
-          </div>
-        </div>
-        <div className="border-t border-white/10 mt-6 pt-4 text- opacity-50 text-center">
-          © {new Date().getFullYear()} SAMELIS. All rights reserved.
-        </div>
-      </div>
-    </footer>
-  )
+ return (<footer className="bg-black border-t border-zinc-800 mt-auto">
+  <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8">
+   <div><h3 className="font-black text-white tracking-wider text-lg">SAMELIS</h3>
+   <p className="text-sm text-zinc-400 mt-1">TRUSTED LIKE FAMILY • Till 6880156</p>
+   <p className="text-sm text-zinc-400 mt-1">Premium Shoes • Boots • Hoods • Polos • Accessories</p>
+   <p className="text-sm font-bold text-orange-400 mt-2">Lipa na M-Pesa Till 6880156 • Buy Goods SAMELIS</p></div>
+   <div><h4 className="font-semibold text-white mb-4">Contact</h4>
+   <p className="text-sm text-zinc-400">Chuka Town, Behind Coop Bank, KE</p>
+   <p className="text-sm text-zinc-400 mt-2">0748 440 035 • Till 6880156</p>
+   <p className="text-sm text-green-400 mt-2"><a href="https://wa.me/254748440035">WhatsApp: 0748440035</a></p></div>
+  </div>
+  <div className="border-t border-zinc-800 mt-8 pt-6 text-center text-sm text-zinc-500">© 2026 SAMELIS • Till 6880156 • 0748440035 • Made in Kenya</div>
+ </footer>)
 }
