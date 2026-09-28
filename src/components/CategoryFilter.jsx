@@ -16,7 +16,7 @@ const categories = Object.keys(categoryMap)
 
 export default function CategoryFilter({ activeCategory, onSelect }) {
   return (
-    <nav aria-label="Product categories" className="sticky top-16 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+    <nav aria-label="Product categories" className="sticky top-14 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-3">
         {categories.map((name) => {
           const active = activeCategory === name
