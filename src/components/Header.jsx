@@ -8,7 +8,7 @@ const ICON = {
   menu: 'M4 7h16M4 12h16M4 17h16',
   close: 'M6 6l12 12M18 6L6 18',
 }
-const Icon = ({ name, size = 20 }) => (
+const Icon = ({ name, size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d={ICON[name]} />
   </svg>
@@ -51,7 +51,7 @@ export default function Header() {
         onChange={(e) => setQ(e.target.value)}
         aria-label="Search products"
         placeholder="Search shoes, boots, hoods"
-        className="h-10 w-full rounded-full border border-slate-200 bg-slate-50 pl-10 pr-4 text-sm outline-none focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-100"
+        className="h-9 w-full rounded-full border border-slate-200 bg-slate-50 pl-10 pr-4 text-sm outline-none focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-100"
       />
     </form>
   )
@@ -59,7 +59,7 @@ export default function Header() {
   return (
     <>
       <div className="bg-slate-900 text-xs text-slate-100">
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-6 px-4 py-2 sm:justify-between">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-6 px-4 py-1.5 sm:justify-between">
           <span>Free same-day delivery in Nairobi</span>
           <span className="hidden items-center gap-4 sm:flex">
             <span>Chuka Town, behind Coop Bank</span>
@@ -69,13 +69,13 @@ export default function Header() {
       </div>
 
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4">
+        <div className="mx-auto flex h-14 max-w-7xl items-center gap-3 px-4">
           <Link to="/" className="flex items-center gap-2.5" aria-label="Samelis home">
-            <img src="/logo.png" alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} className="h-9 w-9 rounded-lg object-contain" />
-            <span className="text-xl font-extrabold tracking-tight text-slate-900">Samelis</span>
+            <img src="/logo.png" alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} className="h-7 w-7 rounded-md object-contain" />
+            <span className="text-lg font-extrabold tracking-tight text-slate-900">Samelis</span>
           </Link>
 
-          <nav className="ml-6 hidden gap-6 md:flex" aria-label="Main">
+          <nav className="ml-4 hidden gap-5 md:flex" aria-label="Main">
             <NavLink to="/" end className={navClass}>Home</NavLink>
             <NavLink to="/products" className={navClass}>Shop</NavLink>
             <NavLink to="/contact" className={navClass}>Contact</NavLink>
