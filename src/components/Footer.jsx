@@ -1,16 +1,40 @@
 import { Link } from 'react-router-dom'
-export default function Footer(){
- return (<footer className="bg-black border-t border-zinc-800 mt-auto">
-  <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8">
-   <div><h3 className="font-black text-white tracking-wider text-lg">SAMELIS</h3>
-   <p className="text-sm text-zinc-400 mt-1">TRUSTED LIKE FAMILY • Till 6880156</p>
-   <p className="text-sm text-zinc-400 mt-1">Premium Shoes • Boots • Hoods • Polos • Accessories</p>
-   <p className="text-sm font-bold text-orange-400 mt-2">Lipa na M-Pesa Till 6880156 • Buy Goods SAMELIS</p></div>
-   <div><h4 className="font-semibold text-white mb-4">Contact</h4>
-   <p className="text-sm text-zinc-400">Chuka Town, Behind Coop Bank, KE</p>
-   <p className="text-sm text-zinc-400 mt-2">0748 440 035 • Till 6880156</p>
-   <p className="text-sm text-green-400 mt-2"><a href="https://wa.me/254748440035">WhatsApp: 0748440035</a></p></div>
-  </div>
-  <div className="border-t border-zinc-800 mt-8 pt-6 text-center text-sm text-zinc-500">© 2026 SAMELIS • Till 6880156 • 0748440035 • Made in Kenya</div>
- </footer>)
+
+const link = 'hover:text-white'
+
+export default function Footer() {
+  return (
+    <footer className="mt-auto bg-slate-900 text-slate-300">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-3">
+        <div>
+          <p className="text-lg font-extrabold text-white">Samelis</p>
+          <p className="mt-2 max-w-xs text-sm">Shoes, boots, hoods, polos and accessories, delivered in Nairobi.</p>
+        </div>
+
+        <div>
+          <h4 className="text-sm font-semibold text-white">Shop</h4>
+          <ul className="mt-3 space-y-2 text-sm">
+            <li><Link to="/products" className={link}>All products</Link></li>
+            <li><Link to="/cart" className={link}>Cart</Link></li>
+            <li><Link to="/orders" className={link}>Your orders</Link></li>
+            <li><Link to="/contact" className={link}>Contact</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-sm font-semibold text-white">Contact</h4>
+          <address className="mt-3 space-y-2 text-sm not-italic">
+            <p>Chuka Town, behind Coop Bank</p>
+            <p><a href="tel:+254748440035" className={link}>0748 440 035</a></p>
+            <p><a href="https://wa.me/254748440035" target="_blank" rel="noopener noreferrer" className={link}>Chat on WhatsApp</a></p>
+          </address>
+          <p className="mt-4 text-sm">Pay by M-Pesa Buy Goods, Till 6880156</p>
+        </div>
+      </div>
+
+      <div className="border-t border-slate-800 py-5 text-center text-xs text-slate-500">
+        &copy; {new Date().getFullYear()} Samelis. All rights reserved.
+      </div>
+    </footer>
+  )
 }
