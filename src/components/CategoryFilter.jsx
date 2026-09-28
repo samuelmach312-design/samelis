@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Keep this export: other files import it to map a category to product types.
 export const categoryMap = {
   'All': [],
   'Shoes': ['Shoes', 'Running', 'Lifestyle', 'Sneakers', 'Skate', 'Basketball', 'Casual'],
@@ -8,42 +9,33 @@ export const categoryMap = {
   'Accessories': ['Accessories'],
   'Shoe Care': ['Shoe Care'],
   'Hoods': ['Hoods'],
-  'Polo Shirts': ['Polo Shirts']
+  'Polo Shirts': ['Polo Shirts'],
 }
 
-const categories = [
-  { name: 'All', icon: '◉' },
-  { name: 'Shoes', icon: '👟' },
-  { name: 'Boots', icon: '🥾' },
-  { name: 'Slides', icon: '🩴' },
-  { name: 'Accessories', icon: '🎒' },
-  { name: 'Shoe Care', icon: '✨' },
-  { name: 'Hoods', icon: '🧥' },
-  { name: 'Polo Shirts', icon: '👔' }
-]
+const categories = Object.keys(categoryMap)
 
 export default function CategoryFilter({ activeCategory, onSelect }) {
   return (
-    <div className="bg-white border-b border-gray-100 sticky top- md:top- z-20 backdrop-blur-xl bg-white/90">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex gap-2.5 overflow-x-auto px-3 py-3.5 scrollbar-hide">
-          {categories.map((cat) => {
-            const active = activeCategory === cat.name
-            return (
-              <button
-                key={cat.name}
-                onClick={() => onSelect(cat.name)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all border ${
-                  active? 'bg-black text-white border-black shadow-lg scale-[1.02]' : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-white hover:text-black'
-                }`}
-              >
-                <span>{cat.icon}</span> {cat.name}
-                {active && <span className="w-1.5 h-1.5 bg-orange-500 rounded-full ml-1 animate-pulse"></span>}
-              </button>
-            )
-          })}
-        </div>
+    <nav aria-label="Product categories" className="sticky top-16 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+      <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-3">
+        {categories.map((name) => {
+          const active = activeCategory === name
+          return (
+            <button
+              key={name}
+              onClick={() => onSelect(name)}
+              aria-pressed={active}
+              className={`shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                active
+                  ? 'border-slate-900 bg-slate-900 text-white'
+                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-400 hover:text-slate-900'
+              }`}
+            >
+              {name}
+            </button>
+          )
+        })}
       </div>
-    </div>
+    </nav>
   )
 }
